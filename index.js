@@ -182,8 +182,14 @@ function sortCarInventory(arr) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
  */
-function getModelYears(/* code here */) {
+function getModelYears(arr) {
   /* code here */
+  const carYears = [];
+  for (i = 0; i < arr.length; i++) {
+    const year = arr[i].car_year;
+    carYears.push(year);
+  }
+  return carYears;
 }
 
 /**
@@ -198,8 +204,19 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
  */
-function getOlderCars(/* code here */) {
+function getOlderCars(arr, maxYear) {
   /* code here */
+  const cars = [];
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i].car_year < 0) {
+      return cars;
+    } else if (arr[i].car_year <= maxYear) {
+      cars.push(arr[i]);
+    } else {
+      arr[i];
+    }
+  }
+  return cars;
 }
 
 /**
@@ -214,8 +231,20 @@ function getOlderCars(/* code here */) {
  * in the same order as they appear in the original inventory.
  */
 
-function getGermanCars(carModel) {
+function getGermanCars(arr) {
   /* code here */
+  const vehicle = [];
+  for (i = 0; i < arr.length; i++) {
+    if (
+      arr[i].car_make === "Audi" ||
+      arr[i].car_make === "Mercedes-Benz" ||
+      arr[i].car_make === "Volkswagen" ||
+      arr[i].car_make === "BMW"
+    ) {
+      vehicle.push(arr[i]);
+    }
+  }
+  return vehicle;
 }
 
 /**
@@ -253,8 +282,17 @@ const argTimesTwo = num => num * 2; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
  */
-function carMaker(/* code here */) {
+function carMaker(num) {
   /* code here */
+  const info = {
+    odometer: num,
+    drive: function(distance) {
+      const value = (this.odometer += distance);
+      return value;
+    }
+  };
+
+  return info;
 }
 
 /// ////// END OF CHALLENGE /////////
